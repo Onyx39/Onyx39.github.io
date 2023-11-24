@@ -5,41 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Two Column Website</title>
     <style>
-        body {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        #left-column {
-            flex: 1;
-            text-align: center;
-        }
-
-        #right-column {
-            flex: 1;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        #form-container {
-            max-width: 400px;
-            margin: 0 auto;
-        }
+        /* Your styles here */
     </style>
 </head>
 <body>
 
     <div id="left-column">
-        <img src="images/paysage.jpg" alt="Big Picture" style="max-width: 100%;">
+        <img src="paysage.jpg" alt="Big Picture" style="max-width: 100%;">
     </div>
 
     <div id="right-column">
         <h2>Password Change Form</h2>
 
-        <form id="form-container" action="/change-password" method="post">
+        <form id="form-container">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required><br>
 
@@ -52,10 +30,44 @@
             <label for="confirmNewPassword">Confirm New Password:</label>
             <input type="password" id="confirmNewPassword" name="confirmNewPassword" required><br>
 
-            <input type="submit" value="Change Password">
+            <input type="button" value="Change Password" onclick="submitForm()">
         </form>
     </div>
 
+    <script>
+        function submitForm() {
+            const id = document.getElementById('id').value;
+            const password = document.getElementById('password').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+            const formData = {
+                id: id,
+                password: password,
+                newPassword: newPassword,
+                confirmNewPassword: confirmNewPassword
+            };
+
+            // Convert the form data to JSON
+            const jsonData = JSON.stringify(formData);
+
+            // Send a POST request to your server
+            fetch('/change-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: jsonData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
 </body>
 </html>
-
