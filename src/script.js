@@ -16,7 +16,7 @@ function submitForm() {
   fetch('https://api.github.com/repos/Onyx39/onyx39.github.io/issues', {
     method: 'POST',
     headers: {
-      'Authorization': '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',
+      'Authorization': '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',
       'Content-Type': 'application/json'
     },
     body: jsonData
