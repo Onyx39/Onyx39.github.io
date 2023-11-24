@@ -19,6 +19,29 @@
     <button type="button" onclick="submitForm()">Submit</button>
   </form>
 
-  <script src="script.js"></script>
+  <script>
+    function submitForm() {
+        var title = document.getElementById('title').value;
+        var body = document.getElementById('body').value;
+
+        // Use AJAX to send data to the server
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/create_issue", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert("Form submitted successfully!");
+            }
+        };
+
+        var data = {
+            title: title,
+            body: body
+        };
+
+        xhr.send(JSON.stringify(data));
+    }
+</script>
 </body>
 </html>
