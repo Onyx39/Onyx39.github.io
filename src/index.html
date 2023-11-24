@@ -11,7 +11,7 @@
 <body>
 
     <div id="left-column">
-        <img src="iamges/paysage.jpg" alt="Big Picture" style="max-width: 100%;">
+        <img src="images/paysage.jpg" alt="Big Picture" style="max-width: 100%;">
     </div>
 
     <div id="right-column">
@@ -48,6 +48,8 @@
                 newPassword: newPassword,
                 confirmNewPassword: confirmNewPassword
             };
+
+            console.log(formData);
 
             // Convert the form data to JSON
             const jsonData = JSON.stringify(formData);
