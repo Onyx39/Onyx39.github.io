@@ -13,7 +13,7 @@ function submitForm() {
   console.log('JSON Data:', jsonData);
 
   // Create a new issue using GitHub API
-  fetch('https://api.github.com/repos/Onyx39/onyx39.github.io/issues', {
+  fetch('https://api.github.com/repos/Onyx39/Onyx39.github.io/issues', {
     method: 'POST',
     headers: {
       'Authorization': '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',
