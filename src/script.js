@@ -10,11 +10,13 @@ function submitForm() {
   // Convert data to JSON
   var jsonData = JSON.stringify(data);
 
+  console.log('JSON Data:', jsonData);
+
   // Create a new issue using GitHub API
   fetch('https://api.github.com/repos/Onyx39/onyx39.github.io/issues', {
     method: 'POST',
     headers: {
-      'Authorization': 'Bearer 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',
+      'Authorization': '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',
       'Content-Type': 'application/json'
     },
     body: jsonData
