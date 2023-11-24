@@ -3,27 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sécurité UdeS</title>
+    <title>Two Column Website</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #left-column {
+            flex: 1;
+            text-align: center;
+        }
+
+        #right-column {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
 
-    <h2>Password Change Form</h2>
+    <div id="left-column">
+        <img src="images/paysage.jpg" alt="Big Picture" style="max-width: 100%;">
+    </div>
 
-    <form action="/change-password" method="post">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required><br>
+    <div id="right-column">
+        <h2>Password Change Form</h2>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+        <form id="form-container" action="/change-password" method="post">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required><br>
 
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" name="newPassword" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
 
-        <label for="confirmNewPassword">Confirm New Password:</label>
-        <input type="password" id="confirmNewPassword" name="confirmNewPassword" required><br>
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required><br>
 
-        <input type="submit" value="Change Password">
-    </form>
+            <label for="confirmNewPassword">Confirm New Password:</label>
+            <input type="password" id="confirmNewPassword" name="confirmNewPassword" required><br>
+
+            <input type="submit" value="Change Password">
+        </form>
+    </div>
 
 </body>
 </html>
+
