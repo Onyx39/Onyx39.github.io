@@ -61,6 +61,20 @@ button:hover {
   #left-column {
     display: none;
   }
+  h4 {
+    margin-top: 20px;
+  }
+  
+  #fin {
+    font-size: 13px;
+    color: rgb(61, 60, 60);
+    max-width: 335px;
+  }
+
+  input {
+    max-width: 90%
+  }
+  
 }
 
 input {
