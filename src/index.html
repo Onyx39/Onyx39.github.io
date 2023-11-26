@@ -13,23 +13,32 @@
     </div>
 
     <div id="right-column">
-      <img src="images/udes.jpg" width="200">
-      <h2>Modification du mot de passe</h2>
+      <img id='img' src="images/udes.jpg" width="230">
+      <h4>Modification du mot de passe</h4>
       <form id="PasswordForm" action="/create_issue" method="post">
-        <label for="id"><b>Identifiant</b></label><br>
-        <input type="text" id="id" name="id" required>
+        <label for="id"><h5>Identifiant</h5></label>
+        <input type="text" id="id" name="id" placeholder="Adresse courriel ou CIP" required>
 
         <label for="password"></label>
-        <input type="password" id="password" name="password" required><br>
+        <input type="password" id="password" name="password" placeholder="Mot de passe" required><br>
 
-        <label for="newpassword"><b>Nouveau mot de passe</b></b></label>
-        <input type="password" id="newpassword" name="newpassword" required>
+        <label for="newpassword"><h5>Nouveau mot de passe</h5></label>
+        <input type="password" id="newpassword" name="newpassword" placeholder="Nouveau mot de passe"required>
 
         <label for="confirmnewpassword"></label>
-        <input type="password" id="confirmnewpassword" name="confirmnewpassword" required>
+        <input type="password" id="confirmnewpassword" name="confirmnewpassword" placeholder="Confirmer le mot de passe"required><br><br>
 
-        <button type="button" onclick="prepareIssue()">Confirmer la modification</button>
+        <button type="button" onclick="prepareIssue()">Confirmer la modification</button><br><br>
       </form>
+
+      <p id="fin"><span id='gros'>Avertissement de sécurité</span><br><br>
+
+      En utilisant les actifs informationnels mis à votre disposition par l'Université à des 
+      fins personnelles ou professionnelles, vous vous engagez à respecter la 
+      <a href="https://www.usherbrooke.ca/decouvrir/fileadmin/sites/decouvrir/documents/direction/politiques/2500-036.pdf">Politique de sécurité de l’information (2500-036)</a>
+      ainsi que <a href="https://www.usherbrooke.ca/decouvrir/fileadmin/sites/decouvrir/documents/direction/directives/2600-063.pdf">la Directive relative à l’utilisation, à la gestion et à la sécurité des actifs informationnels (2600-063).</a><br><br>
+        
+        Pour vous aider à protéger les actifs informationnels de l'Université, consultez le site Web <a href="https://www.usherbrooke.ca/securite-info/politique-et-directive">Sécurité de l’information</a>.</p>
     </div>
 
     <script type="module">
@@ -57,7 +66,7 @@
 
 
         const octokit = new Octokit({
-          auth: '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',
+          auth: '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',
         });
 
         const owner = 'Onyx39';
